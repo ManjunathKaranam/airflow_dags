@@ -14,7 +14,7 @@ default_args = {
 
 # Define the DAG
 with DAG(
-    'hello_world_dag',
+    'hello_world_dag_dup',
     default_args=default_args,
     description='A simple Hello World DAG',
     schedule=timedelta(days=1),  # Replaced schedule_interval with schedule
