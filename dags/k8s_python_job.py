@@ -15,7 +15,8 @@ with DAG(
     'k8s_python_job',
     default_args=default_args,
     description='A DAG to run a Python job in a Kubernetes Pod',
-    schedule_interval=None,
+    # FIX: Changed 'schedule_interval' to 'schedule'
+    schedule=None,
     catchup=False,
 ) as dag:
 
@@ -28,6 +29,7 @@ with DAG(
         arguments=["print('Hello from Kubernetes Pod!')"],
         labels={"app": "python-job"},
         get_logs=True,
+        # Note: Ensure your RBAC allows the 'airflow' namespace
         is_delete_operator_pod=True,
         in_cluster=True,
     )
