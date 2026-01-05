@@ -27,7 +27,7 @@ with DAG(
             echo "Executing on Pod: $TARGET, Container: $CONTAINER"
     
             # 3. Exec with explicit container name
-            kubectl exec -n innovations "$TARGET" -c "$CONTAINER" -- python3 /appt_count.py
+            kubectl exec -n innovations "$TARGET" -c "$CONTAINER" -- python3 /app/appt_count.py
             """
         ],
         get_logs=True,
