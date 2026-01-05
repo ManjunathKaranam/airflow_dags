@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.providers.http.operators.http import SimpleHttpOperator
+from airflow.providers.http.operators.http import HttpOperator
 from datetime import datetime
 
 with DAG(
@@ -10,7 +10,7 @@ with DAG(
 ) as dag:
 
     # Triggering a service in 'target-namespace' from 'airflow-namespace'
-    trigger_job = SimpleHttpOperator(
+    trigger_job = HttpOperator(
         task_id='trigger_job',
         http_conn_id='sc_api_connection', # Define this in Airflow Connections
         endpoint='api/v1/run-job',           # The route on your microservice
